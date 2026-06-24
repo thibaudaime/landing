@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<!-- saved from url=(0067)file:///Users/stephanieetthibaud/Desktop/landing-thibaud-aime.html# -->
+<html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thibaud Aimé — Investissement locatif clé en main</title>
+<link href="./Thibaud Aimé — Investissement locatif clé en main_files/css2" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --beige: #F5F1E8;
+    --beige-dark: #EDE7D5;
+    --text-dark: #1A1A1A;
+    --text-mid: #4A4A4A;
+    --text-light: #7A7A7A;
+    --gold: #B8934A;
+    --gold-light: #D4AF6E;
+    --white: #FFFFFF;
+    --border: #DDD5C0;
+  }
+  body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text-dark); line-height: 1.6; }
+
+  /* EDIT MODE */
+  .edit-bar {
+    background: #1A1A1A;
+    color: #FFF;
+    text-align: center;
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 200;
+  }
+  .edit-bar span { color: #B8934A; }
+  .edit-toggle {
+    background: #B8934A;
+    color: #FFF;
+    border: none;
+    padding: 0.3rem 0.9rem;
+    border-radius: 3px;
+    font-size: 0.78rem;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+  }
+  .edit-toggle:hover { background: #D4AF6E; }
+
+  /* Editable elements */
+  [contenteditable="true"] {
+    outline: none;
+    cursor: text;
+  }
+  body.editing [contenteditable="true"] {
+    background: rgba(184,147,74,0.06);
+    border-radius: 3px;
+    outline: 1.5px dashed #B8934A;
+    outline-offset: 2px;
+    cursor: text;
+  }
+  body.editing [contenteditable="true"]:focus {
+    background: rgba(184,147,74,0.12);
+    outline: 2px solid #B8934A;
+  }
+  body.editing .edit-hint {
+    display: block !important;
+  }
+  .edit-hint {
+    display: none;
+    font-size: 0.7rem;
+    color: #B8934A;
+    font-style: italic;
+    margin-top: 0.3rem;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* NAV */
+  nav {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 36px;
+    z-index: 100;
+  }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--text-dark); letter-spacing: 0.02em; }
+  .nav-logo span { color: var(--gold); }
+  .nav-cta {
+    background: var(--gold); color: var(--white); border: none; padding: 0.6rem 1.4rem;
+    border-radius: 4px; font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 500;
+    cursor: pointer; letter-spacing: 0.03em; text-decoration: none; transition: background 0.2s; display: inline-block;
+  }
+  .nav-cta:hover { background: var(--gold-light); }
+
+  /* HERO */
+  .hero-wrap { background: var(--beige); padding: 0 2rem; }
+  .hero {
+    padding: 5rem 0 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+    align-items: center; max-width: 1100px; margin: 0 auto;
+  }
+  .hero-badge {
+    display: inline-block; background: var(--white); border: 1px solid var(--border);
+    color: var(--gold); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 0.35rem 0.9rem; border-radius: 2px; margin-bottom: 1.2rem;
+  }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 600; line-height: 1.2; margin-bottom: 1.2rem; }
+  .hero h1 em { font-style: normal; color: var(--gold); }
+  .hero-sub { font-size: 1.05rem; color: var(--text-mid); margin-bottom: 1.6rem; line-height: 1.7; }
+  .hero-checklist { list-style: none; margin-bottom: 2rem; }
+  .hero-checklist li { font-size: 0.95rem; color: var(--text-mid); padding: 0.3rem 0; display: flex; align-items: flex-start; gap: 0.6rem; }
+  .hero-checklist li::before { content: "✓"; color: var(--gold); font-weight: 600; font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+  .hero-trust { font-size: 0.85rem; color: var(--text-light); margin-top: 1rem; }
+  .hero-trust strong { color: var(--text-dark); }
+  .btn-primary {
+    display: inline-block; background: var(--gold); color: var(--white); padding: 1rem 2.2rem;
+    border-radius: 4px; font-size: 1rem; font-weight: 500; letter-spacing: 0.02em;
+    text-decoration: none; transition: background 0.2s; border: none; cursor: pointer;
+  }
+  .btn-primary:hover { background: var(--gold-light); }
+
+  /* Hero images — uses real Artae photos */
+  .hero-img-grid { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 220px 140px; gap: 10px; }
+  .hero-img-grid .img-main { grid-column: 1 / 3; border-radius: 6px; overflow: hidden; }
+  .hero-img-grid .img-sec { border-radius: 6px; overflow: hidden; }
+  .hero-img-grid img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 6px; }
+
+  /* STATS BAR */
+  .stats-bar { background: var(--text-dark); padding: 2rem; display: flex; justify-content: center; gap: 4rem; flex-wrap: wrap; }
+  .stat-item { text-align: center; }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--gold); font-weight: 600; }
+  .stat-label { font-size: 0.8rem; color: #B0A898; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.2rem; }
+
+  /* SECTIONS */
+  section { padding: 5rem 2rem; }
+  .container { max-width: 1000px; margin: 0 auto; }
+  .section-eyebrow { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); font-weight: 500; margin-bottom: 0.8rem; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 600; margin-bottom: 1rem; line-height: 1.25; }
+  .section-intro { font-size: 1.05rem; color: var(--text-mid); max-width: 620px; line-height: 1.75; }
+
+  /* OÙ INVESTIR */
+  .villes-section { background: var(--beige); }
+  .villes-text { font-size: 1rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 1.5rem; max-width: 720px; }
+  .villes-text strong { color: var(--text-dark); }
+
+  /* EXPERTISE */
+  .expertise-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-top: 3rem; }
+  .expertise-card { background: var(--beige); border: 1px solid var(--border); border-radius: 8px; padding: 1.8rem; }
+  .expertise-card h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; margin-bottom: 0.8rem; }
+  .expertise-card p { font-size: 0.9rem; color: var(--text-mid); line-height: 1.7; }
+
+  /* BÉNÉFICES */
+  .benefits-bg { background: var(--text-dark); }
+  .benefits-bg .section-title { color: var(--white); }
+  .benefits-bg .section-eyebrow { color: var(--gold-light); }
+  .benefits-bg .section-intro { color: #B0A898; }
+  .benefits-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 3rem; }
+  .benefit-item { border-left: 2px solid var(--gold); padding-left: 1.5rem; }
+  .benefit-title { font-size: 1rem; font-weight: 600; color: var(--white); margin-bottom: 0.5rem; }
+  .benefit-desc { font-size: 0.88rem; color: #B0A898; line-height: 1.7; }
+
+  /* PROJETS CLIENTS */
+  .projets-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 3rem; }
+  .projet-card { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+  .projet-img { height: 160px; background: var(--beige-dark); overflow: hidden; }
+  .projet-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .projet-info { padding: 1rem 1.2rem; }
+  .projet-name { font-family: 'Playfair Display', serif; font-size: 1rem; margin-bottom: 0.5rem; }
+  .projet-stats { font-size: 0.82rem; color: var(--text-mid); line-height: 1.8; }
+  .projet-renta { color: var(--gold); font-weight: 600; }
+
+  /* TÉMOIGNAGES */
+  .testimonials-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-top: 3rem; }
+  .testimonial-card { background: var(--beige); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; }
+  .testimonial-stars { color: var(--gold); font-size: 0.9rem; letter-spacing: 0.1em; margin-bottom: 0.8rem; }
+  .testimonial-text { font-size: 0.92rem; color: var(--text-mid); line-height: 1.7; font-style: italic; margin-bottom: 1.2rem; }
+  .testimonial-author { border-top: 1px solid var(--border); padding-top: 0.8rem; }
+  .testimonial-name { font-size: 0.88rem; font-weight: 600; color: var(--text-dark); }
+  .testimonial-location { font-size: 0.78rem; color: var(--text-light); margin-top: 0.15rem; }
+
+  /* CTA BLOCK */
+  .cta-block { background: var(--beige); border-top: 1px solid var(--border); text-align: center; padding: 5rem 2rem; }
+  .cta-block .section-title { margin-bottom: 1rem; }
+  .cta-block p { font-size: 1rem; color: var(--text-mid); margin-bottom: 2rem; max-width: 540px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+  .cta-note { margin-top: 1rem !important; font-size: 0.82rem; color: var(--text-light); }
+  .google-bar { background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 2rem; display: inline-flex; align-items: center; gap: 1.5rem; margin-top: 2.5rem; }
+  .google-score { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--text-dark); font-weight: 600; }
+  .google-detail { font-size: 0.82rem; color: var(--text-light); }
+  .google-stars { color: #FBBC04; font-size: 1.1rem; letter-spacing: 0.05em; }
+
+  /* FOOTER */
+  footer { background: var(--text-dark); padding: 2.5rem 2rem; text-align: center; }
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--white); margin-bottom: 0.5rem; }
+  .footer-logo span { color: var(--gold); }
+  .footer-links { display: flex; justify-content: center; gap: 2rem; margin-top: 1rem; }
+  .footer-links a { font-size: 0.78rem; color: #6A6258; text-decoration: none; }
+  .footer-copy { font-size: 0.75rem; color: #4A4440; margin-top: 1.5rem; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 0; }
+    .hero h1 { font-size: 2rem; }
+    .expertise-grid, .testimonials-grid, .projets-grid { grid-template-columns: 1fr; }
+    .benefits-grid { grid-template-columns: 1fr; }
+    .stats-bar { gap: 2rem; }
+    nav { top: 36px; }
+  }
+</style>
+</head>
+<body class="editing">
+
+<!-- BARRE EDITION -->
+<div class="edit-bar">
+  <span>✏️ Mode édition</span>
+  <button class="edit-toggle" onclick="toggleEdit()" id="editBtn" style="background: rgb(74, 74, 74);">Désactiver l'édition</button>
+  <span id="editStatus" style="color: rgb(184, 147, 74);">✏️ Cliquez sur n'importe quel texte pour le modifier directement</span>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Thibaud Aimé <span>·</span> Immobilier</div>
+  <a href="file:///Users/stephanieetthibaud/Desktop/landing-thibaud-aime.html#rdv" class="nav-cta">Réserver mon audit stratégique offert</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero-wrap">
+  <div class="hero">
+    <div>
+      <div class="hero-badge" contenteditable="true">⭐ 4,9/5 sur + 200 avis clients Google ✅ Gain de temps ✅ Zéro stress</div>
+      <h1 contenteditable="true">Investissement <em>clé en main</em> — Investissez dans l'immobilier locatif !</h1>
+      <p class="hero-sub" contenteditable="true">Solution clé en main et sur-mesure pour investir sereinement dans l'immobilier : je m'occupe de chaque étape.</p>
+      <ul class="hero-checklist">
+        <li contenteditable="true">100 % clé en main</li>
+        <li contenteditable="true">Gain de temps</li>
+        <li contenteditable="true">Tranquillité d'esprit</li>
+      </ul>
+      <a href="file:///Users/stephanieetthibaud/Desktop/landing-thibaud-aime.html#rdv" class="btn-primary">Réserver mon audit stratégique offert</a>
+      <p class="hero-trust" style="margin-top:1rem;">100 % gratuit · Sans engagement · <strong>Places limitées</strong></p>
+    </div>
+    <div class="hero-img-grid">
+      <div class="img-main">
+        <img src="./Thibaud Aimé — Investissement locatif clé en main_files/Photos_En-tete_Artae_918x638px-59.webp" alt="Investissement immobilier clé en main">
+      </div>
+      <div class="img-sec">
+        <img src="./Thibaud Aimé — Investissement locatif clé en main_files/Photos_En-tete_Artae_918x638px-1-1.webp" alt="Bien immobilier">
+      </div>
+      <div class="img-sec">
+        <img src="./Thibaud Aimé — Investissement locatif clé en main_files/Photos_En-tete_Artae_918x638px-60.webp" alt="Accompagnement investissement">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-num" contenteditable="true">4,9/5</div>
+    <div class="stat-label" contenteditable="true">sur + 200 avis Google</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num" contenteditable="true">100 %</div>
+    <div class="stat-label" contenteditable="true">clé en main</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num" contenteditable="true">Zéro</div>
+    <div class="stat-label" contenteditable="true">stress pour vous</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num" contenteditable="true">1 seul</div>
+    <div class="stat-label" contenteditable="true">interlocuteur dédié</div>
+  </div>
+</div>
+
+<!-- OÙ INVESTIR -->
+<section class="villes-section">
+  <div class="container">
+    <h2 class="section-title" contenteditable="true">Où investir avec Moi ?</h2>
+    <p class="villes-text" contenteditable="true">
+      Oui, l'investissement locatif est un <strong>choix d'investissement rentable et avantageux</strong>… mais encore faut-il savoir où investir ? Quels sont les avantages de chaque ville ? Quels sont les profils d'investissement qu'on y retrouve ?
+    </p>
+    <p class="villes-text" contenteditable="true">
+      Ce n'est pas un choix anodin, c'est pour ça que je vous aide à <strong>déterminer la ville qui correspond à votre projet. Je n'investis avec vous que dans des marchés que je maitrise car j'y ai moi même investi.</strong><br>Les départements du 31, 82, 81 et 46 sont mon terrain de jeu !</p>
+    <a href="file:///Users/stephanieetthibaud/Desktop/landing-thibaud-aime.html#rdv" class="btn-primary" style="margin-bottom:0.8rem; display:inline-block;">Planifier mon audit offert</a>
+    <p style="font-size:0.85rem; color:var(--text-light); margin-top:0.6rem;" contenteditable="true">Échangez avec moi pour définir votre projet (sans engagement).</p>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section>
+  <div class="container">
+    <div class="section-eyebrow">Mon expertise</div>
+    <h2 class="section-title" contenteditable="true">Mon expertise à votre service</h2>
+    <p class="section-intro" contenteditable="true">Trop cher, trop compliqué, trop long d'investir dans l'immobilier ? Spécialiste de l'investissement locatif, et multi-investisseur depuis plus de 12 ans je déniche pour vous les <strong>meilleures opportunités</strong> pour faire de votre projet immobilier un investissement serein. Je pilote chaque étape : <strong>stratégie, recherche, travaux, agencement et décoration.</strong></p>
+    <div class="expertise-grid">
+      <div class="expertise-card">
+        <h3 contenteditable="true">Stratégie &amp; Acquisition</h3>
+        <p contenteditable="true">À mes côtés, vous définissez le <strong>cadre de votre projet</strong> : objectif d'investissement, stratégie court ou long terme, budget… Je <strong>trouve le bien</strong> qui correspond à votre projet, en évaluant précisément le potentiel et la rentabilité globale.</p>
+      </div>
+      <div class="expertise-card">
+        <h3 contenteditable="true">Travaux</h3>
+        <p contenteditable="true">Je réalise les <strong>devis auprès d'artisans compétents</strong> et de confiance. Puis je pilote<strong>&nbsp;le chantier</strong> de près en vous faisant des comptes-rendus réguliers avec photos et vidéos.</p>
+      </div>
+      <div class="expertise-card">
+        <h3 contenteditable="true">Agencement &amp; Décoration</h3>
+        <p contenteditable="true">J'<strong>optimise les espaces de votre bien</strong>, grâce à notre architecte, et je me charge de le <strong>meubler et le décorer</strong> avec soin pour en exploiter tout le potentiel. Vous êtes épargné de toutes les galères : attendre les livreurs, le SAV, le montage des meubles…</p>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:2.5rem;">
+      <a href="file:///Users/stephanieetthibaud/Desktop/landing-thibaud-aime.html#rdv" class="btn-primary">Réserver mon audit stratégique offert</a>
+      <p style="font-size:0.82rem; color:var(--text-light); margin-top:0.8rem;" contenteditable="true">100 % gratuit pour discuter avec moi, sans engagement.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BÉNÉFICES -->
+<section class="benefits-bg">
+  <div class="container">
+    <div class="section-eyebrow">Ce que vous gagnez</div>
+    <h2 class="section-title" contenteditable="true">Ce que vous gagnez vraiment en investissant avec moi</h2>
+    <div class="benefits-grid">
+      <div class="benefit-item">
+        <div class="benefit-title" contenteditable="true">Gain de temps</div>
+        <p class="benefit-desc" contenteditable="true">Économisez votre temps personnel. Dites adieu aux recherches interminables, aux démarches administratives, aux suivis de chantier... Je prends tout en main.</p>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-title" contenteditable="true">Tranquillité d'esprit</div>
+        <p class="benefit-desc" contenteditable="true">Faites confiance à un expert pour n'avoir aucune mauvaise surprise et gagner en efficacité. Je gère tout pour vous, et vous n'avez qu'un seul interlocuteur.</p>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-title" contenteditable="true">Investissement sécurisé</div>
+        <p class="benefit-desc" contenteditable="true">Engagez-vous dans un projet solide et sécurisé, piloté par un expert de terrain qui maîtrise parfaitement les réalités du marché local pour maximiser votre réussite.</p>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-title" contenteditable="true">Accompagnement sur-mesure</div>
+        <p class="benefit-desc" contenteditable="true">3 services à la carte, pensés pour s'adapter à vos besoins. Choisissez ce qui vous correspond, et laissez-moi m'occuper du reste.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJETS CLIENTS -->
+<section>
+  <div class="container">
+    <div class="section-eyebrow">Projets réalisés</div>
+    <h2 class="section-title" contenteditable="true">Ils ont déjà investi avec Moi</h2>
+    <p class="section-intro" contenteditable="true">Ils sont nombreux à m'avoir fait confiance pour concrétiser leur projet d'investissement locatif. Chaque projet est unique, à l'image de chacun de mes clients.</p>
+    <div style="text-align:center; margin:1.5rem 0;">
+      <a href="file:///Users/stephanieetthibaud/Desktop/landing-thibaud-aime.html#rdv" class="btn-primary">Audit stratégique offert</a>
+      <p style="font-size:0.82rem; color:var(--text-light); margin-top:0.6rem;" contenteditable="true">Faites comme eux, tout part d'un rendez-vous gratuit.</p>
+    </div>
+    <div class="projets-grid">
+      <div class="projet-card">
+        <div class="projet-img"><img src="./Thibaud Aimé — Investissement locatif clé en main_files/DSC7480-HDR.webp" alt="T2 Gaillac"></div>
+        <div class="projet-info">
+          <div class="projet-name" contenteditable="true">T2 — Gaillac</div>
+          <div class="projet-stats" contenteditable="true">
+            Budget total : 113 876 €<br>
+            Revenus : 6 600 € / an<br>
+            <span class="projet-renta">Rentabilité : 5,8 %</span>
+          </div>
+        </div>
+      </div>
+      <div class="projet-card">
+        <div class="projet-img"><img src="./Thibaud Aimé — Investissement locatif clé en main_files/DSC7489.webp" alt="T1 Toulouse"></div>
+        <div class="projet-info">
+          <div class="projet-name" contenteditable="true">T1 hypercentre — Toulouse</div>
+          <div class="projet-stats" contenteditable="true">
+            Budget total : 158 532 €<br>
+            Revenus : 7 440 € / an<br>
+            <span class="projet-renta">Rentabilité : 4,7 %</span>
+          </div>
+        </div>
+      </div>
+      <div class="projet-card">
+        <div class="projet-img"><img src="./Thibaud Aimé — Investissement locatif clé en main_files/57.webp" alt="T1bis Montauban"></div>
+        <div class="projet-info">
+          <div class="projet-name" contenteditable="true">T1 bis — Montauban</div>
+          <div class="projet-stats" contenteditable="true">
+            Budget total : 112 316 €<br>
+            CA projeté : 13 200 € / an (LCD)<br>
+            <span class="projet-renta">Rentabilité : 11,7 %</span>
+          </div>
+        </div>
+      </div>
+      <div class="projet-card">
+        <div class="projet-img"><img src="./Thibaud Aimé — Investissement locatif clé en main_files/DSC7283.webp" alt="T1 Montauban"></div>
+        <div class="projet-info">
+          <div class="projet-name" contenteditable="true">T1 — Montauban</div>
+          <div class="projet-stats" contenteditable="true">
+            Budget total : 112 426 €<br>
+            Revenus : 6 600 € / an<br>
+            <span class="projet-renta">Rentabilité : 5,8 %</span>
+          </div>
+        </div>
+      </div>
+      <div class="projet-card">
+        <div class="projet-img"><img src="./Thibaud Aimé — Investissement locatif clé en main_files/DSC6483-HDR.webp" alt="T1 LCD Toulouse"></div>
+        <div class="projet-info">
+          <div class="projet-name" contenteditable="true">T1 LCD — Toulouse</div>
+          <div class="projet-stats" contenteditable="true">
+            Budget total : 170 600 €<br>
+            CA projeté : 19 500 € / an<br>
+            <span class="projet-renta">Rentabilité : 11,4 %</span>
+          </div>
+        </div>
+      </div>
+      <div class="projet-card">
+        <div class="projet-img"><img src="./Thibaud Aimé — Investissement locatif clé en main_files/43.webp" alt="T2 Mâcon"></div>
+        <div class="projet-info">
+          <div class="projet-name" contenteditable="true">T2 hypercentre — Mâcon</div>
+          <div class="projet-stats" contenteditable="true">
+            Budget total : 125 182 €<br>
+            Revenus : 6 960 € / an<br>
+            <span class="projet-renta">Rentabilité : 5,6 %</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TÉMOIGNAGES -->
+<section style="background:var(--beige);">
+  <div class="container">
+    <div class="section-eyebrow">Avis clients</div>
+    <h2 class="section-title" contenteditable="true">Mes clients ont quelque chose à vous dire !</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text" contenteditable="true">Thibaud a assuré un suivi du projet de A à Z, avec une bonne visibilité sur les étapes et un accompagnement jusqu'au bout. Pour un premier investissement on se sent vraiment en confiance. Je recommande à tous ceux qui souhaitent investir dans l'immobilier de manière sereine et bien encadrée.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-name" contenteditable="true">Jessy</div>
+          <div class="testimonial-location" contenteditable="true">Vit en Normandie (27) et a investi à Gaillac (81)</div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text" contenteditable="true">Très satisfait de ce projet clé en main. Le budget initial a été maîtrisé et le suivi des travaux a été constant. L'équipe est sérieuse, professionnelle, et nous met en confiance du début à la fin. C'est un vrai gain de temps !</p>
+        <div class="testimonial-author">
+          <div class="testimonial-name" contenteditable="true">Fabrice</div>
+          <div class="testimonial-location" contenteditable="true">Vit à Bayonne et a investi dans un T1 à Montauban (82)</div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text" contenteditable="true">Thibaud s'est occupé de notre accompagnement du début à la fin. Sa disponibilité et sa réactivité ont été remarquables, ses conseils précieux et la communication très fluide. Nous avons été très satisfaits du suivi des travaux.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-name" contenteditable="true">Noémie &amp; Guillaume</div>
+          <div class="testimonial-location" contenteditable="true">Vivent en région parisienne (93) et ont investi dans un T2 à Montech (82)</div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text" contenteditable="true">Un grand merci pour l'accompagnement lors de notre premier achat immobilier. Nous avions beaucoup d'appréhensions et Thibaud a su nous rassurer à chaque étape. Être aussi bien accompagnés fait toute la différence.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-name" contenteditable="true">Benjamin &amp; Juliane</div>
+          <div class="testimonial-location" contenteditable="true">Vivent à Marseille et ont investi dans un T1 à Villefranche-sur-Saône</div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text" contenteditable="true">On a vraiment eu le sentiment d'être accompagnés par quelqu'un d'impliqué et qui comprend les réalités de l'investissement. Une très belle expérience que nous recommandons !</p>
+        <div class="testimonial-author">
+          <div class="testimonial-name" contenteditable="true">Nathalie &amp; Amadou</div>
+          <div class="testimonial-location" contenteditable="true">Vivent à Limoges (87) et ont investi dans un T2 à Gaillac (81)</div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text" contenteditable="true">Pour un second investissement, j'ai décidé de me faire accompagner par Thibaud. Tout a été mené de manière très professionnelle et sérieuse. Si vous voulez investir mais que vous avez peur de vous tromper ou investir à distance, n'hésitez pas !</p>
+        <div class="testimonial-author">
+          <div class="testimonial-name" contenteditable="true">Louisette B.</div>
+          <div class="testimonial-location" contenteditable="true">Vit à Paris et a investi dans un T2 à Corbarieu (82)</div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:2.5rem;">
+      <div class="google-bar">
+        <div>
+          <div class="google-stars">★★★★★</div>
+          <div class="google-detail">+200 avis Google vérifiés</div>
+        </div>
+        <div>
+          <div class="google-score">4,9/5</div>
+          <div class="google-detail">note moyenne</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<div class="cta-block" id="rdv">
+  <div class="section-eyebrow">Passez à l'action</div>
+  <h2 class="section-title" contenteditable="true">Planifier mon audit stratégique offert</h2>
+  <p contenteditable="true">Échangeons gratuitement sur votre projet immobilier. Un appel sans engagement pour définir ensemble la meilleure stratégie selon votre situation.</p>
+  <a href="file:///Users/stephanieetthibaud/Desktop/VOTRE_LIEN_CALENDLY" class="btn-primary">Réserver mon audit stratégique offert →</a>
+  <p class="cta-note" contenteditable="true">C'est gratuit et on discute de votre projet !</p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Thibaud Aimé <span>·</span> Immobilier clé en main</div>
+  <div class="footer-links">
+    <a href="file:///Users/stephanieetthibaud/Desktop/landing-thibaud-aime.html#">Mentions légales</a>
+    <a href="file:///Users/stephanieetthibaud/Desktop/landing-thibaud-aime.html#">Politique de cookies</a>
+    <a href="file:///Users/stephanieetthibaud/Desktop/landing-thibaud-aime.html#">Politique de confidentialité</a>
+  </div>
+  <div class="footer-copy">© 2026 · Thibaud Aimé · Tous droits réservés</div>
+</footer>
+
+<script>
+  var editing = false;
+  function toggleEdit() {
+    editing = !editing;
+    var btn = document.getElementById('editBtn');
+    var status = document.getElementById('editStatus');
+    var editables = document.querySelectorAll('[contenteditable]');
+    if (editing) {
+      document.body.classList.add('editing');
+      editables.forEach(function(el) { el.setAttribute('contenteditable', 'true'); });
+      btn.textContent = 'Désactiver l\'édition';
+      btn.style.background = '#4A4A4A';
+      status.textContent = '✏️ Cliquez sur n\'importe quel texte pour le modifier directement';
+      status.style.color = '#B8934A';
+    } else {
+      document.body.classList.remove('editing');
+      editables.forEach(function(el) { el.setAttribute('contenteditable', 'false'); });
+      btn.textContent = 'Activer l\'édition';
+      btn.style.background = '#B8934A';
+      status.textContent = 'Édition désactivée — vos modifications sont conservées';
+      status.style.color = '#6A6258';
+    }
+  }
+</script>
+
+
+</body></html>
