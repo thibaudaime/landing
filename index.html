@@ -19,55 +19,6 @@
     --border: #DDD5C0;
   }
   body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text-dark); line-height: 1.6; }
-
-  /* EDIT MODE */
-  .edit-bar {
-    background: #1A1A1A;
-    color: #FFF;
-    text-align: center;
-    padding: 0.6rem 1rem;
-    font-size: 0.8rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    position: sticky;
-    top: 0;
-    z-index: 200;
-  }
-  .edit-bar span { color: #B8934A; }
-  .edit-toggle {
-    background: #B8934A;
-    color: #FFF;
-    border: none;
-    padding: 0.3rem 0.9rem;
-    border-radius: 3px;
-    font-size: 0.78rem;
-    cursor: pointer;
-    font-family: 'Inter', sans-serif;
-    font-weight: 500;
-  }
-  .edit-toggle:hover { background: #D4AF6E; }
-
-  /* Editable elements */
-  [contenteditable="true"] {
-    outline: none;
-    cursor: text;
-  }
-  body.editing [contenteditable="true"] {
-    background: rgba(184,147,74,0.06);
-    border-radius: 3px;
-    outline: 1.5px dashed #B8934A;
-    outline-offset: 2px;
-    cursor: text;
-  }
-  body.editing [contenteditable="true"]:focus {
-    background: rgba(184,147,74,0.12);
-    outline: 2px solid #B8934A;
-  }
-  body.editing .edit-hint {
-    display: block !important;
-  }
   .edit-hint {
     display: none;
     font-size: 0.7rem;
@@ -214,12 +165,6 @@
 </head>
 <body>
 
-<!-- BARRE EDITION -->
-<div class="edit-bar">
-  <span>✏️ Mode édition</span>
-  <button class="edit-toggle" onclick="toggleEdit()" id="editBtn">Activer l'édition</button>
-  <span id="editStatus" style="color:#6A6258;">Cliquez sur le bouton pour modifier les textes directement</span>
-</div>
 
 <!-- NAV -->
 <nav>
@@ -515,29 +460,5 @@
   <div class="footer-copy">© 2026 · Thibaud Aimé · Tous droits réservés</div>
 </footer>
 
-<script>
-  var editing = false;
-  function toggleEdit() {
-    editing = !editing;
-    var btn = document.getElementById('editBtn');
-    var status = document.getElementById('editStatus');
-    var editables = document.querySelectorAll('[contenteditable]');
-    if (editing) {
-      document.body.classList.add('editing');
-      editables.forEach(function(el) { el.setAttribute('contenteditable', 'true'); });
-      btn.textContent = 'Désactiver l\'édition';
-      btn.style.background = '#4A4A4A';
-      status.textContent = '✏️ Cliquez sur n\'importe quel texte pour le modifier directement';
-      status.style.color = '#B8934A';
-    } else {
-      document.body.classList.remove('editing');
-      editables.forEach(function(el) { el.setAttribute('contenteditable', 'false'); });
-      btn.textContent = 'Activer l\'édition';
-      btn.style.background = '#B8934A';
-      status.textContent = 'Édition désactivée — vos modifications sont conservées';
-      status.style.color = '#6A6258';
-    }
-  }
-</script>
 </body>
 </html>
